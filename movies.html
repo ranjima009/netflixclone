@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="movies.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding-top: 56.25%;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .youtube-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .movie-card {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="movies.html" class="active">Movies</a></li>
+                <li><a href="tvshows.html">TV Shows</a></li>
+                <li><a href="mylist.html">My List</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>13 Reasons Why</h1>
+                <p>Katherine Langford and Kate Walsh star in this groundbreaking drama exploring mental health and teen suicide.</p>
+                <div class="hero-buttons">
+                    <button onclick="playTrailer('https://youtu.be/0XuOkYlUWIs?si=gkgxSH9qaX9uSgTq')">Play</button>
+                    <button>More Info</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="movie-section">
+            <h2>Because You Watched Kuch Kuch Hota Hai</h2>
+            <div class="movie-row">
+                <div class="movie-card" onclick="playTrailer('https://youtu.be/Kv5RKsqVe-Y?si=-s9Uij6OvIbRNo8V')">
+                    <img src="images/movies/lucky.jpg" alt="Lucky Baskar">
+                    <p>Lucky Baskar</p>
+                </div>
+                <div class="movie-card" onclick="playTrailer('Di310WS7zLk')">
+                    <img src="images/movies/wednesday.jpg" alt="Wednesday">
+                    <p>Wednesday</p>
+                </div>
+                <div class="movie-card" onclick="playTrailer('BmVmhjjkN4E')">
+                    <img src="images/movies/vampire.jpg" alt="The Vampire Diaries">
+                    <p>The Vampire Diaries</p>
+                </div>
+                <div class="movie-card" onclick="playTrailer('5UcxlYEbFHo')">
+                    <img src="images/movies/ginny.jpg" alt="Ginny and Georgia">
+                    <p>Ginny and Georgia</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="movie-section">
+            <h2>Continue Watching</h2>
+            <div class="movie-row">
+                <div class="movie-card" onclick="playTrailer('Q7LWWjIlqSc')">
+                    <img src="images/movies/you.jpg" alt="You">
+                    <p>You</p>
+                </div>
+                <div class="movie-card" onclick="playTrailer('oqxAJKy0ii4')">
+                    <img src="images/movies/squidd.jpg" alt="Squid Game">
+                    <p>Squid Game</p>
+                </div>
+                <div class="movie-card" onclick="playTrailer('efgh456')">
+                    <img src="images/movies/bhool.jpg" alt="Bhool Bhulaiyaa 3">
+                    <p>Bhool Bhulaiyaa 3</p>
+                </div>
+                <div class="movie-card" onclick="playTrailer('ijkl789')">
+                    <img src="images/movies/kapil.jpg" alt="The Great Indian Kapil Show">
+                    <p>The Great Indian Kapil Show</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for trailer -->
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeTrailer()">&times;</span>
+            <iframe id="youtubePlayer" class="youtube-player" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player;
+        var modal = document.getElementById('trailerModal');
+
+        function playTrailer(videoId) {
+            modal.style.display = 'block';
+            if (player) {
+                player.loadVideoById(videoId);
+            } else {
+                player = new YT.Player('youtubePlayer', {
+                    videoId: videoId,
+                    playerVars: {
+                        'autoplay': 1,
+                        'modestbranding': 1,
+                        'rel': 0
+                    }
+                });
+            }
+        }
+
+        function closeTrailer() {
+            modal.style.display = 'none';
+            if (player) {
+                player.stopVideo();
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeTrailer();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeTrailer();
+            }
+        });
+    </script>
+</body>
+</html>
