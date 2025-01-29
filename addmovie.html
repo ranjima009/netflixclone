@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Movie</title>
+    <link rel="stylesheet" href="addmovie.css">
+</head>
+<body>
+    <div class="form-container">
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <h1>Add New Movie</h1>
+
+            <!-- Movie Details Form -->
+            <label for="movieName">Movie Name</label>
+            <input type="text" id="movieName" name="movieName" placeholder="Enter movie name" required>
+
+            <label for="mainActors">Main Actors</label>
+            <input type="text" id="mainActors" name="mainActors" placeholder="Enter main actors" required>
+
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" name="genre" placeholder="Enter genre" required>
+
+            <label for="language">Language</label>
+            <input type="text" id="language" name="language" placeholder="Enter language" required>
+
+            <label for="director">Director</label>
+            <input type="text" id="director" name="director" placeholder="Enter director" required>
+
+            <label for="image">Movie Poster</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <!-- YouTube URL to fetch movie metadata -->
+            <label for="youtubeUrl">YouTube URL (Optional)</label>
+            <input type="text" id="youtubeUrl" name="youtubeUrl" placeholder="Enter YouTube URL">
+
+            <button type="button" id="fetchButton">Fetch Movie Info</button>
+        </form>
+
+        <!-- Displaying YouTube metadata -->
+        <div id="videoInfo" style="display: none;">
+            <h3>Video Info</h3>
+            <img id="thumbnail" alt="Video Thumbnail" />
+            <h3 id="videoTitle"></h3>
+            <p id="videoDescription"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -193,3 +193,17 @@ nav ul li a.active {
 .movie-row {
     scroll-behavior: smooth;
 }
+
+/* Add these styles to your existing CSS */
+.movie-card {
+    text-align: center;
+    margin: 10px;
+}
+
+.movie-title {
+    font-size: 14px;
+    color: white;
+    margin-top: 8px;
+    text-align: center;
+    word-wrap: break-word;
+}
